@@ -27,6 +27,7 @@ test("Can get name via getName()", () => {
   const testValue = "Alice";
   const e = new Employee(testValue);
   expect(e.getName()).toBe(testValue);
+  // expect(e).toBe(getName());
 }); // New structure will be needed here
 
 test("Can get id via getId()", () => {
