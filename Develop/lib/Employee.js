@@ -15,31 +15,21 @@ class Employee {
   getEmail() {
     return this.email;
   }
-}
-
-class getId {
-  constructor() {
-    return inquirer
-      .prompt([
-        {
-          type: "number",
-          name: "id",
-          message: "What is the employee's ID?",
-        },
-      ])
-      .then((answers) => {
-        this.id = answers.id;
-        this.getId();
-      });
+  getRole() {
+    return e;
   }
 }
+// Employee.prototype.getRole = function getRole() {
+//   return Employee;
+// };
 
-class getRole {
-  constructor() {
-    this.role = "employee";
-    console.log(this);
-  }
-}
+// function getRole() {
+//   constructor();
+//   {
+//     this.role = "employee";
+//     console.log(this);
+//   }
+// }
 
 const e = new Employee();
 module.exports = Employee;
