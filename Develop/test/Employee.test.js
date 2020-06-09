@@ -28,13 +28,13 @@ test("Can get name via getName()", () => {
   const e = new Employee(testValue);
   expect(e.getName()).toBe(testValue);
   // expect(e).toBe(getName());
-}); // New structure will be needed here
+}); // New structure will be needed here // Complete
 
 test("Can get id via getId()", () => {
   const testValue = 100;
   const e = new Employee("Foo", testValue);
   expect(e.getId()).toBe(testValue);
-});
+}); // Complete
 
 test("Can get email via getEmail()", () => {
   const testValue = "test@test.com";

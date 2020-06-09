@@ -6,22 +6,11 @@ class Employee {
     this.id = id;
     this.email = email;
   }
-}
-
-class getName {
-  constructor() {
-    return inquirer
-      .prompt([
-        {
-          type: "input",
-          name: "name",
-          message: "What is the employee's name?",
-        },
-      ])
-      .then((answers) => {
-        this.name = answers.name;
-        this.e.getName();
-      });
+  getName() {
+    return this.name;
+  }
+  getId() {
+    return this.id;
   }
 }
 
