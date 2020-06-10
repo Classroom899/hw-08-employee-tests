@@ -16,7 +16,7 @@ class Employee {
     return this.email;
   }
   getRole() {
-    return e;
+    return "Employee";
   }
 }
 // Employee.prototype.getRole = function getRole() {
