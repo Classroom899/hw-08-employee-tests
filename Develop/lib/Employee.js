@@ -19,17 +19,5 @@ class Employee {
     return "Employee";
   }
 }
-// Employee.prototype.getRole = function getRole() {
-//   return Employee;
-// };
-
-// function getRole() {
-//   constructor();
-//   {
-//     this.role = "employee";
-//     console.log(this);
-//   }
-// }
-
 const e = new Employee();
 module.exports = Employee;
