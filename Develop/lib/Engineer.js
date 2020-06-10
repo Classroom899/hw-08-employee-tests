@@ -4,12 +4,15 @@ const Employee = require("../lib/Employee");
 // Write the class
 
 class Engineer extends Employee {
-  constructor(GitHubAccount, id, email) {
+  constructor(GitHubUser, id, email) {
     super(name, id, email);
-    this.GitHubAccount = GitHubAccount;
+    this.GitHubUser = GitHubUser;
   }
   getRole() {
     return "Engineer";
+  }
+  getGithub() {
+    return "GitHubUser";
   }
   // getName() {
   //   return this.name;
