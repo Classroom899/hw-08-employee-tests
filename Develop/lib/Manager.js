@@ -9,10 +9,10 @@ class Manager extends Employee {
     this.officeNumber = officeNumber;
   }
   getRole() {
-    return "Engineer";
+    return "Manager";
   }
-  getGithub() {
-    return "GitHubUser";
+  getOfficeNumber() {
+    return this.officeNumber;
   }
 }
 
