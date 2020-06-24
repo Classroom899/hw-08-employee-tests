@@ -1,6 +1,7 @@
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const Employee = require("./lib/Employee");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
@@ -13,7 +14,23 @@ const render = require("./lib/htmlRenderer");
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
+let e = new Employee();
+console.log(e);
+
+inquirer
+  .prompt([
+    {
+      name: "",
+      message: "",
+    },
+  ])
+  .then((answers) => {
+    console.info("Answer:", answers.faveReptile);
+  });
+
 // game example here for creating those character objects
+
+// Insert and look at the games activity
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
