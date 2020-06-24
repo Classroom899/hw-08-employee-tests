@@ -15,20 +15,43 @@ const render = require("./lib/htmlRenderer");
 // and to create objects for each team member (using the correct classes as blueprints!)
 
 let e = new Employee();
+let id = 0;
 console.log(e);
 
 inquirer
   .prompt([
     {
-      name: "",
-      message: "",
+      name: "Name",
+      message: "What is the name of the employee?",
+    },
+    {
+      name: "Email",
+      message: "What is the email of the employee?",
+    },
+    {
+      name: "Role",
+      Type: "list",
+      choices: ["Intern", "Manager", "Manager"],
+      message: "What is your role?",
     },
   ])
   .then((answers) => {
-    console.info("Answer:", answers.faveReptile);
+    if (answers.Role === "Intern") {
+      let intern = new Intern(answers.Name, id, answers.Email, "school");
+    } else if (answers.Role === "Manager") {
+      let manager = new Manager(
+        answers.Name,
+        id,
+        answers.Email,
+        "office number"
+      );
+    } else {
+      let engineer = new Engineer(answers.Name, id, answers.Email, "GitHub");
+    }
+    render();
+    id++;
+    console.info("Answer:", answers);
   });
-
-// game example here for creating those character objects
 
 // Insert and look at the games activity
 
