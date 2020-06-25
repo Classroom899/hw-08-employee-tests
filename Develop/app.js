@@ -14,7 +14,7 @@ const render = require("./lib/htmlRenderer");
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
-let e = new Employee();
+let e;
 let id = 0;
 console.log(e);
 
@@ -37,21 +37,18 @@ inquirer
   ])
   .then((answers) => {
     if (answers.Role === "Intern") {
-      let intern = new Intern(answers.Name, id, answers.Email, "school");
+      e = new Intern(answers.Name, id, answers.Email, "school");
     } else if (answers.Role === "Manager") {
-      let manager = new Manager(
-        answers.Name,
-        id,
-        answers.Email,
-        "office number"
-      );
+      e = new Manager(answers.Name, id, answers.Email, "office number");
     } else {
-      let engineer = new Engineer(answers.Name, id, answers.Email, "GitHub");
+      e = new Engineer(answers.Name, id, answers.Email, "GitHub");
     }
-    render();
+    // Insert new code here
+
     id++;
     console.info("Answer:", answers);
   });
+render([new Engineer("name", 0, "email", "GitHub")]);
 
 // Insert and look at the games activity
 
@@ -69,8 +66,4 @@ inquirer
 // information; write your code to ask different questions via inquirer depending on
 // employee type.
 
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
+// TEST FUNCTIONALITY AND HAVE A RENDER FUNCTION
