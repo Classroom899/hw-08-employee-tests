@@ -47,8 +47,16 @@ inquirer
 
     id++;
     console.info("Answer:", answers);
+    page = render([e]); // Connection is here for page to be equal to the rendered answers
+    // page = render([new Engineer("name", 0, "email", "GitHub")]);
+    console.info("Page:", page);
+    fs.writeFile("output/team.html", page, function (err) {
+      if (err) return console.log(err);
+      console.log("Hello World > helloworld.txt");
+    });
+
+    console.info("Done!");
   });
-render([new Engineer("name", 0, "email", "GitHub")]);
 
 // Insert and look at the games activity
 
