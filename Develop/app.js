@@ -10,54 +10,67 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
+const { listenerCount } = require("process");
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
+const main = async () => {
+  let e;
+  let id = 0;
+  let employeeList = [];
+  let keepGoing = 1;
 
-let e;
-let id = 0;
-console.log(e);
-
-inquirer
-  .prompt([
-    {
-      name: "Name",
-      message: "What is the name of the employee?",
-    },
-    {
-      name: "Email",
-      message: "What is the email of the employee?",
-    },
-    {
-      name: "Role",
-      Type: "list",
-      choices: ["Intern", "Manager", "Manager"],
-      message: "What is your role?",
-    },
-  ])
-  .then((answers) => {
-    if (answers.Role === "Intern") {
-      e = new Intern(answers.Name, id, answers.Email, "school");
-    } else if (answers.Role === "Manager") {
-      e = new Manager(answers.Name, id, answers.Email, "office number");
-    } else {
-      e = new Engineer(answers.Name, id, answers.Email, "GitHub");
-    }
-    // Insert new code here
-
-    id++;
-    console.info("Answer:", answers);
-    page = render([e]); // Connection is here for page to be equal to the rendered answers
-    // page = render([new Engineer("name", 0, "email", "GitHub")]);
-    console.info("Page:", page);
-    fs.writeFile("output/team.html", page, function (err) {
-      if (err) return console.log(err);
-      console.log("Hello World > helloworld.txt");
-    });
-
-    console.info("Done!");
+  console.log(e);
+  while (keepGoing == 1) {
+    await inquirer
+      .prompt([
+        {
+          name: "Name",
+          message: "What is the name of the employee?",
+        },
+        {
+          name: "Email",
+          message: "What is the email of the employee?",
+        },
+        {
+          name: "Role",
+          Type: "list",
+          choices: ["Intern", "Manager", "Manager"],
+          message: "What is your role?",
+        },
+        {
+          name: "Continue",
+          Type: "list",
+          choices: ["Yes", "No"],
+          message: "Would you like to add another?",
+        },
+      ])
+      .then((answers) => {
+        if (answers.Role === "Intern") {
+          e = new Intern(answers.Name, id, answers.Email, "school");
+        } else if (answers.Role === "Manager") {
+          e = new Manager(answers.Name, id, answers.Email, "office number");
+        } else {
+          e = new Engineer(answers.Name, id, answers.Email, "GitHub");
+        }
+        id++;
+        console.info("Answer:", answers);
+        employeeList.push(e);
+        if (answers.Continue === "No") {
+          keepGoing = 0;
+        }
+      });
+  }
+  page = render(employeeList); // Connection is here for page to be equal to the rendered answers
+  // page = render([new Engineer("name", 0, "email", "GitHub")]);
+  console.info("Page:", page);
+  fs.writeFile("output/team.html", page, function (err) {
+    if (err) return console.log(err);
   });
+  console.log("Done!");
+};
 
+main();
 // Insert and look at the games activity
 
 // After the user has input all employees desired, call the `render` function (required
